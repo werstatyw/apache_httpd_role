@@ -65,17 +65,17 @@
   with_items:
     - "{{ apache_additional_config_folders }}"
 
-- name: Apache_httpd | Add symlink in sites-enabled
-  file:
-    src: "{{ apache_config_dir }}/sites-available/000-default.conf"
-    dest: "{{ apache_config_dir }}/sites-enabled/{{ item }}.conf"
-    owner: root
-    group: root
-    mode: 0755
-    state: link
-  with_items:
-    - "{{ apache_sites_enabled }}"
-  notify: Reload Apache
+# - name: Apache_httpd | Add symlink in sites-enabled
+#   file:
+#     src: "{{ apache_config_dir }}/sites-available/{{ item }}conf"
+#     dest: "{{ apache_config_dir }}/sites-enabled/{{ item }}.conf"
+#     owner: root
+#     group: root
+#     mode: 0755
+#     state: link
+#   with_items:
+#     - "{{ apache_sites_enabled }}"
+#   notify: Reload Apache
 
 - name: Apache_httpd | Create virtualhost folders
   file:
